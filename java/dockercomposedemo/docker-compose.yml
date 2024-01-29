@@ -2,6 +2,7 @@ version: "3.3"
 services: 
     web:
         image: httpd
+        # this command will specify a docker file and buidl the custom image: build: .
         deploy:
             replicas: 3
         ports: 
