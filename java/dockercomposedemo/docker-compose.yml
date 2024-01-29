@@ -9,5 +9,15 @@ services:
             - "8080:80"
     db:
         image: redis
+        networks:
+            - dbnetwork
         deploy:
             replicas: 2
+networks:
+    # default: 
+    #     external:
+    #       name: "default external docker network."
+    webnetwork:
+        driver: bridge
+    dbnetwork:
+        driver: bridge
