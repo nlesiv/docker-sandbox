@@ -7,6 +7,12 @@ services:
             replicas: 3
         ports: 
             - "8080:80"
+        volumes:
+        #   - myvolume:/data
+            - type: volumes
+              source: myvolume
+              target: data
+    
     db:
         image: redis
         networks:
@@ -21,3 +27,5 @@ networks:
         driver: bridge
     dbnetwork:
         driver: bridge
+volumes:
+  myvolume:
