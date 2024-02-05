@@ -1,0 +1,17 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: myapp
+  labels:
+    app: fp
+    release: stable
+    team: red
+  annotations:
+    dockerHubUrl: ""
+    commitId: ""
+spec:
+  containers:
+  - name: web
+    image: httpd
+  - name: db
+    image: redis
