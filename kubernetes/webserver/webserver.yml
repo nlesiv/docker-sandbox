@@ -24,3 +24,26 @@ spec:
           image: httpd:2
           ports: 
             - containerPort: 80
+          volumeMounts:
+            - name: demovol
+              mountPath: /data
+            - name: demo-config-map-vol
+              mountPath: /etc/config
+            - name: demo-secret
+              mountPath: /etc/mysecrets
+            - name: demo-pvc
+              mountPath: /data/clustervol
+      volumes:
+        - name: demovol
+          hostPath: #Hosts a path on the POD to the container. All containers that are part of this pod will have access to this directorya
+            path: /data
+            type: Directory 
+        - name: demo-config-map-vol
+          configMap:
+            name: demo-config-map
+        - name: demo-secret
+          secret: 
+            secretName: demo-secret
+        - name: demo-pvc
+          persistentVolumeClaim: 
+            claimName: demo-pvc
